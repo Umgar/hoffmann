@@ -9,6 +9,7 @@ namespace kod_Hoffmana
         static void Main(string[] args)
         {
             string input;
+            string cont;
             if(args.Length >= 1) input = args[0];
             else {Console.WriteLine("Give an sentence: "); input = Console.ReadLine();}
             List<CharNode> nodes = new List<CharNode>();
@@ -16,6 +17,18 @@ namespace kod_Hoffmana
             foreach(CharNode node in nodes)
                 Console.WriteLine($"{node.character} - {node.codeValue}");
             Console.WriteLine(changeToCode(input, nodes));
+            do{
+                Console.WriteLine("Use this code to encode another strings?");
+                Console.WriteLine("1 - continue");
+                Console.WriteLine("0 - to end");
+                cont = Console.ReadLine();
+                if(cont == "0")
+                    break;
+                Console.WriteLine("Give an sentence: "); 
+                input = Console.ReadLine();
+                Console.WriteLine(changeToCode(input, nodes));
+            }while(true);
+
         }
 
         static public void createCode(ref List<CharNode> nodes, string input)
